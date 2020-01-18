@@ -21,13 +21,6 @@ If you want to change the namespace arbitrarily, enable the following constants
 Specify in any namespace.
 */
 
-# const MK2_NAMESPACE="mark2";
-
-/*
-If you change or duplicate the directory name, 
-please enter the directory name in the following constant
-*/
-
-# const MK2_SYSNAME="AP2";
+const MK2_NAMESPACE="sample_0003";
 
 new Mk2GenCLI();

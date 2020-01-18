@@ -12,7 +12,9 @@
  * 
  */
 
-namespace mk2\core;
+namespace sample_0003;
+
+use mk2\core\Import;
 
 Import::Controller("App");
 

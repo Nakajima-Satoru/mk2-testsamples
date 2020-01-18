@@ -11,7 +11,9 @@
  * 
  */
 
-namespace mk2\core;
+namespace sample_0003;
+
+use mk2\core\Controller;
 
 class AppController extends Controller{
 
