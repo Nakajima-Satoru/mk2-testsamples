@@ -32,6 +32,7 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/p1"=>"page1@index",
 	],
 
 	/**

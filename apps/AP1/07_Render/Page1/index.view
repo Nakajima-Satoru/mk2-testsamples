@@ -1,0 +1,4 @@
+<div class="wrap">
+	<h2>Page1 View...</h2>
+	<a href="<?php echo $this->getUrl("/"); ?>">GoTo Top</a>
+</div>
