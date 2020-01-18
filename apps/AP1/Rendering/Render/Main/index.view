@@ -1,6 +1,8 @@
 <div class="wrap text-center">
 	<div class="pt-5 pb-5">
 		<h2>Install Complete!</h2>
-		<p class="h5">あとはご自由に！</p>
 	</div>
+	<a href="<?php echo $this->getUrl("@p1"); ?>" class="mr-3">/p1</a>
+	<a href="<?php echo $this->getUrl("@p1_1/12"); ?>">/p1_1/12</a>
+
 </div>

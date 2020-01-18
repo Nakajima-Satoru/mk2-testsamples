@@ -32,6 +32,8 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/p1"=>"page1@index",
+		"/p1_1/{:id?}"=>"page1@arg1",
 	],
 
 	/**

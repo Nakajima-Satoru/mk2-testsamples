@@ -1,0 +1,7 @@
+<div class="wrap">
+    <h1>Page1/arg1 View...</h1>
+
+    <p>Aregment1 = <?php echo $arg1; ?></p>
+
+    <a href="<?php echo $this->getUrl("/"); ?>">GoTo Top</a>
+</div>
