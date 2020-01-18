@@ -1,0 +1,11 @@
+<div class="wrap">
+	<div class="pt-5 pb-5">
+		<div class="text-center">
+			<h2 class="mt-5 mb-3">404 Not Found</h2>
+			<p class="h5 mb-5">ページが見つかりません</p>
+		</div>
+		<pre><?php echo $err; ?></pre>
+		<a href="<?php echo $this->getUrl("/"); ?>">Go to Top</a>
+	</div>
+</div>
+

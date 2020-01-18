@@ -1,0 +1,13 @@
+<div class="wrap text-center">
+	<div class="pt-5 pb-5">
+		<h2>Install Complete!</h2>
+		<p class="h5">あとはご自由に！</p>
+	</div>
+	<a href="<?php echo $this->getUrl("@page"); ?>" class="mr-3">Page Sample</a>
+	<a href="<?php echo $this->getUrl("@page/no_render"); ?>" class="mr-3">Page Sample(Not Render)</a>
+	<a href="<?php echo $this->getUrl("@page/notfound"); ?>">404 Not Found Sample.</a>
+	<br><br>
+	<a href="<?php echo $this->getUrl("@page/err"); ?>" class="mr-3">500 Error Sample.</a>
+	<a href="<?php echo $this->getUrl("@validate"); ?>" class="mr-3">Validator Sample</a>
+	<a href="<?php echo $this->getUrl("@dbtest"); ?>">DB Table Control Sample</a>
+</div>

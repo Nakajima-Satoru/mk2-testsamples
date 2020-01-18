@@ -1,0 +1,11 @@
+<div class="wrap">
+	<div class="pt-5 pb-5">
+		<div class="text-center">
+			<h3 class="mt-5 mb-3">500 INTERNAL SERVER ERROR.</h3>
+			<p class="h5 mb-5">致命的なサーバーエラーです。</p>
+		</div>
+		<pre><?php echo $err; ?></pre>
+		<a href="<?php echo $this->getUrl("/"); ?>">Go to Top</a>
+	</div>
+</div>
+

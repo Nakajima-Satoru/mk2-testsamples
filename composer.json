@@ -1,0 +1,42 @@
+{
+	"name":"mk2/install",
+	"description": "Simple PHP Framework 'mk2' Smart install packeage.",
+	"type": "library",
+	"license": "MIT",
+	"homepage":"https://www.mk2-php.com/",
+	"authors": [{
+		"name": "Nakajima Satoru",
+		"email": "info@mk2-php.com"
+	}],
+	"keywords": ["PHP","php","Framework","framework","mk2","Web"],
+	"require": {
+		"php": ">=5.4.0",
+		"mk2/core":"dev-master",
+		"mk2/orm":"dev-master",
+		"mk2/validator":"dev-master",
+		"mk2/packer":"dev-master"
+	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/Nakajima-Satoru/mk2-core.git"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/Nakajima-Satoru/mk2-orm.git"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/Nakajima-Satoru/mk2-validator.git"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/Nakajima-Satoru/mk2-packer.git"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"mk2\\install\\":"/"
+		}
+	}
+}
