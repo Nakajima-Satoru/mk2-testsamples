@@ -18,4 +18,9 @@ Change to your own namespace and respond.
 
 [https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0003](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0003)
 
-## # 
+## # sample_0004
+
+When the routing mode is set to "auto".
+
+[https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0004](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0004)
+
