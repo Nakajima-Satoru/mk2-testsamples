@@ -1,0 +1,5 @@
+<div class="wrap">
+	<h1>Page Index...</h1>
+	<p><a href="<?php echo $this->getUrl("@page/index2"); ?>">/page/index2</a></p>
+	<p><a href="<?php echo $this->getUrl("/"); ?>">GoTo Top</a></p>
+</div>

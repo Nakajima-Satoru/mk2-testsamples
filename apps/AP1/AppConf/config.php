@@ -24,7 +24,7 @@ return[
 	# onepage : Access concentrates on only one page without routing.
 	#           The controller and action specified by defControls are the actual access destinations.
 
-	"routeMode"=>"manual",
+	"routeMode"=>"auto",
 
 	# fullPath
 	#

@@ -30,9 +30,7 @@ return [
 	 * Click here for routing on each page (end point).
 	 */
 
-	"pages"=>[
-		"/"=>"main@index",
-	],
+	"pages"=>[],
 
 	/**
 	 * error
