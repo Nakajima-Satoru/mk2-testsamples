@@ -32,6 +32,9 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/form"=>"form@index",
+		"/form/confirm"=>"form@confirm",
+		"/form/complete"=>"form@complete",
 	],
 
 	/**

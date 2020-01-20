@@ -1,0 +1,89 @@
+<div class="wrap">
+	<div class="crumb mb-3">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>Form Test Sample</span>
+	</div>
+	<h2>Form Test Sample</h2>
+
+	<br>
+
+	<?php
+	$Forms=$this->UI->Form;
+	echo $Forms->start();
+	echo $Forms->setTokenHidden();
+	?>
+
+	<div class="form-group">
+		<table class="mb-4">
+		<tr>
+			<th>お名前<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("your_name",["style"=>"width:250px"]);
+				echo $Forms->setError("your_name");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>お名前[フリガナ]<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("your_name_kana",["style"=>"width:250px"]);
+				echo $Forms->setError("your_name_kana");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>Email<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("email",["style"=>"width:400px"]);
+				echo $Forms->setError("email");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>TEL<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("telno",["style"=>"width:250px"]);
+				echo $Forms->setError("telno");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>HP URL</th>
+			<td>
+				<?php
+				echo $Forms->setInput("hpurl",["style"=>"width:300px"]);
+				echo $Forms->setError("hpurl");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>Category<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setPulldown("category",$categoryList,["empty"=>"--selecte--","style"=>"width:150px"]);
+				echo $Forms->setError("category");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>問い合わせ内容<span class="text-danger ml-2">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setTextarea("message",["style"=>"height:200px"]);
+				echo $Forms->setError("message");
+				?>
+			</td>
+		</tr>
+		</table>
+
+		<div class="text-center">
+			<?php echo $Forms->setButton("確認画面へ",["class"=>"btn btn-primary btn-lg"]); ?>
+		</div>
+	</div>
+	<?php echo $Forms->end(); ?>
+
+</div>

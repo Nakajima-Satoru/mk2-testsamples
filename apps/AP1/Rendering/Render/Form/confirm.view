@@ -1,0 +1,70 @@
+<div class="wrap">
+	<div class="crumb mb-3">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>Form Test Sample(Confirm)</span>
+	</div>
+	<h2>Form Test Sample(Confirm)</h2>
+
+	<br>
+
+	<p>下記内容で送信テスト致します。</p>
+	
+	<div class="form-group">
+		<table class="mb-4">
+		<tr>
+			<th style="width:200px">お名前</th>
+			<td>
+				<?php echo sanitize($cache["your_name"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>お名前[フリガナ]</th>
+			<td>
+				<?php echo sanitize($cache["your_name_kana"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>
+				<?php echo sanitize($cache["email"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>TEL</th>
+			<td>
+				<?php echo sanitize($cache["telno"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>HP URL</th>
+			<td>
+				<?php echo sanitize($cache["hpurl"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>Category</th>
+			<td>
+				<?php echo $categoryList[$cache["category"]]; ?>
+			</td>
+		</tr>
+		<tr>
+			<th>問い合わせ内容</th>
+			<td>
+				<?php echo nl2br(sanitize($cache["message"])); ?>
+			</td>
+		</tr>
+		</table>
+
+		<div class="text-center">
+			<?php
+			$Forms=$this->UI->Form;
+			echo $Forms->start();
+			echo $Forms->setTokenHidden();
+			echo $Forms->setButton("送信テストする",["class"=>"btn btn-primary btn-lg"]);
+			echo $Forms->end();
+			?>
+		</div>
+	</div>
+
+	<a href="<?php echo $this->getUrl("@form/?data_keep=true"); ?>">Back To</a>
+</div>

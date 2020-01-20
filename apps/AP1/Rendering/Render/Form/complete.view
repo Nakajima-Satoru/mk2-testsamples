@@ -1,0 +1,4 @@
+<div class="wrap">
+	<h2>送信完了しました</h2>
+	<p><a href="<?php echo $this->getUrl("/"); ?>">GoTo Top</a>
+</div>

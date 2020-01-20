@@ -128,8 +128,15 @@ footer{
 	margin:0px auto;
 }
 .invalid-feedback{
-	color:#ff2211;
-	font-size:120%;
+	background:#cc2211;
+	color:#fff;
+	padding:0px 10px;
+	line-height:2rem;
+	font-size:100%;
+}
+.invalid-feedback:before{
+	content:"[ERROR!]";
+	margin-right:10px;
 }
 .form-control{
 	background:#222;
