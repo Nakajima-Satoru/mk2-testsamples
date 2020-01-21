@@ -32,6 +32,11 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/dbtable"=>"dbtable@index",
+		"/dbtable/register"=>"dbtable@edit",
+		"/dbtable/edit/{:id}"=>"dbtable@edit",
+		"/dbtable/confirm"=>"dbtable@confirm",
+		"/dbtable/delete/{:id}"=>"dbtable@delete",
 	],
 
 	/**

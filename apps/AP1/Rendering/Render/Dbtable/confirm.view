@@ -1,0 +1,38 @@
+<div class="wrap">
+	<h2>Database Table Test Sample(Confirm)</h2>
+	<br>
+
+	<p>下記内容をレコード登録/更新します。</p>
+
+	<dl>
+		<dt>name</dt>
+		<dd><?php echo sanitize($cache["post"]["name"]); ?></dd>
+		<dt>code</dt>
+		<dd><?php echo sanitize($cache["post"]["code"]); ?></dd>
+		<dt>caption</dt>
+		<dd><?php echo nl2br(sanitize($cache["post"]["caption"])); ?></dd>
+	</dl>
+
+	<div class="text-center">
+		<?php
+		echo $this->UI->Form->start();
+		echo $this->UI->Form->setTokenHidden();
+		echo $this->UI->Form->setButton("Submit",["class"=>"btn btn-primary btn-lg"]);
+		echo $this->UI->Form->end();
+		?>
+	</div>
+
+	<?php
+	if(!empty($cache["post"]["id"])){
+	?>
+	<a href="<?php echo $this->getUrl("@dbtable/edit/?data_keep=1"); ?>">Back to</a>
+	<?php
+	}
+	else{
+	?>
+	<a href="<?php echo $this->getUrl("@dbtable/register/?data_keep=1"); ?>">Back to</a>
+	<?php
+	}
+	?>
+
+</div>

@@ -1,0 +1,96 @@
+<div class="wrap">
+	<h2>Database Table Test Sample</h2>
+
+	<?php
+	if(!empty($res["flg"])){
+	?>
+
+		<div class="text-right mb-3">
+			<a href="<?php echo $this->getUrl("@dbtable/register"); ?>" class="btn btn-success">Add Recode</a>
+		</div>
+
+		<?php
+		if(!empty($sendMsg)){
+		?>
+		<div class="bg-success pt-2 pb-2 pl-3 pr-3 mt-3 mb-3"><?php echo $sendMsg; ?></div>
+		<?php
+		}
+		if(!empty($dangerMsg)){
+		?>
+		<div class="bg-danger pt-2 pb-2 pl-3 pr-3 mt-3 mb-3"><?php echo $dangerMsg; ?></div>
+		<?php
+		}
+		?>
+
+		<?php
+		if($res["result"]){
+		?>
+
+		<table class="mb-3">
+		<tr>
+			<th width="150">created</th>
+			<th width="150">updated</th>
+			<th width="150">code</th>
+			<th>name</th>
+			<th width="150"></th>	
+		</tr>
+		<?php
+		foreach($res["result"] as $r_){
+		?>
+		<tr>
+			<td><?php echo date_format(date_create($r_->created),"Y-m-d H:i"); ?></td>
+			<td><?php echo date_format(date_create($r_->updated),"Y-m-d H:i"); ?></td>
+			<td><?php echo sanitize($r_->code); ?></td>
+			<td><?php echo sanitize($r_->name); ?></td>
+			<td class="text-right">
+				<a href="<?php echo $this->getUrl("@dbtable/edit/".$r_->id); ?>" class="btn btn-primary">Edit</a>
+				<a href="<?php echo $this->getUrl("@dbtable/delete/".$r_->id); ?>" class="btn btn-danger btn-delete" onClick='if(!confirm("Delete the selected record information.\n Is it OK?")){ return false; }'>Delete</a>
+			</td>
+		</tr>
+		<?php
+		}
+		?>
+		</table>
+
+		<?php echo $this->UI->Paginate->output($res["paginate"]); ?>
+
+		<script>
+		$(function(){
+			$(".btn-delete").on("click",function(){
+				var href=$(this).attr("href");
+
+				if(!confirm("Delete the selected record. \n Are you sure?")){
+					return false;
+				}
+
+			});
+		});
+		</script>
+
+		<?php	
+		}
+		else{
+		?>
+		<div style="background:#333;padding:50px 0px;text-align:center;margin:20px 0px;">
+			<h3>Recode Not Found.</h3>
+		</div>
+		<?php			
+		}
+	}
+	else
+	{
+	?>
+
+		<div style="background:#333;padding:50px 0px;text-align:center;margin:20px 0px;">
+			<h3 class="mb-5">Database Error.</h3>
+			<p class="mb-4">It looks like the database is not connected or the database or table has not been created yet.<br>
+			Connect to the database server and import the following SQL code to get ready.</p>
+			<a href="<?php echo $this->getUrl("@mk2_sql.sql"); ?>" download="mk2_sql.sql">Get SQL Code</a>
+		</div>
+
+	<?php
+	}
+	?>
+
+	<a href="<?php echo $this->getUrl("/"); ?>">Go To Top</a>
+</div>

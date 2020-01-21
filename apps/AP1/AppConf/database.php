@@ -31,7 +31,7 @@ return[
 		"username"=>"root",
 		"password"=>"",
 		"port"=>3306,
-		"database"=>"mk2dbsample",
+		"database"=>"mk2db",
 		"encoding"=>"utf8mb4",
 	],
 
