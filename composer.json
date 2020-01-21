@@ -11,7 +11,7 @@
 	"keywords": ["PHP","php","Framework","framework","mk2","Web"],
 	"require": {
 		"php": ">=5.4.0",
-		"mk2/core":"dev-branch_render20200121",
+		"mk2/core":"dev-master",
 		"mk2/orm":"dev-master",
 		"mk2/validator":"dev-master",
 		"mk2/packer":"dev-master"
