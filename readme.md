@@ -35,3 +35,9 @@ Contact Form Sample.
 Render Class Add.
 
 [https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0006](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0006)
+
+## # sample_0007
+
+Database Table Control Sample(CRUD).
+
+[https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0007](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0007)
