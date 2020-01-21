@@ -32,6 +32,9 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/auth"=>"auth@index",
+		"/auth/login"=>"auth@login",
+		"/auth/create"=>"auth@create",
 	],
 
 	/**

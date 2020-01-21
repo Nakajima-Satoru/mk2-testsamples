@@ -1,0 +1,8 @@
+<div class="wrap">
+	<h2>Database Access Error</h2>
+	<div style="background:#222;padding:30px 0px;line-height:2em;text-align:center;">
+		データベースに接続できないか、データベーステーブルが存在していない様です。<br>
+		データベース接続先の設定の見直しと、下記よりSQLコードをダウンロードして、任意のデータベースサーバーへインポートしてみてください。<br>
+		<a href="<?php echo $this->getUrl("@mk2_sql_auth.sql"); ?>" download="mk2_sql_auth.sql">SQL Code Download</a>
+	</div>
+</div>
