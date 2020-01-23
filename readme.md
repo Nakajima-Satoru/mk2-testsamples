@@ -41,3 +41,9 @@ Render Class Add.
 Database Table Control Sample(CRUD).
 
 [https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0007](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_0007)
+
+## # sample_packer_auth
+
+Test sample for account authentication.
+
+[https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_auth](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_auth)
