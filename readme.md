@@ -41,5 +41,7 @@ The constant **MK2_ROOT_LEVEL** is set to 3.
 const MK2_ROOT_LEVEL=3;
 ```
 
+<hr>
+
 HP : https://www.mk2-php.tech/  
 Copylight (C) Nakajima Satoru.
