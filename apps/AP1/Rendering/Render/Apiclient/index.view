@@ -1,0 +1,7 @@
+<div class="wrap">
+	<h2>PrivateApiPacker Test Sample</h2>
+
+	<p>Click the button below to request the API server.</p>
+	<a href="<?php echo $this->getUrl("@api_client/?request=private"); ?>" class="btn btn-primary">Test Access Private-API</a>
+
+</div>

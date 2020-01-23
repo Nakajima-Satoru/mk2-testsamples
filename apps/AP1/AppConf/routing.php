@@ -32,6 +32,8 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/api_client"=>"apiclient@index",
+		"/api_server/private"=>"apiserver@private",
 	],
 
 	/**
