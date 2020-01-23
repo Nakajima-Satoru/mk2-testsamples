@@ -1,5 +1,19 @@
 <div class="wrap">
 	<div style="width:300px;margin:0px auto;">
+
+		<?php
+		if(!empty($sendMsg)){
+		?>
+		<div class="bg-success pt-2 pb-2 pl-3 pr-3 mt-3 mb-3"><?php echo $sendMsg; ?></div>
+		<?php
+		}
+		if(!empty($dangerMsg)){
+		?>
+		<div class="bg-danger pt-2 pb-2 pl-3 pr-3 mt-3 mb-3"><?php echo $dangerMsg; ?></div>
+		<?php
+		}
+		?>
+
 		<?php
 		$Forms=$this->UI->Form;
 		echo $Forms->start();

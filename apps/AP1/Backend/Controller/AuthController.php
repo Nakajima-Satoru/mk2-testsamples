@@ -18,11 +18,14 @@ Import::Controller("App");
 
 class AuthController extends AppController{
 
+	# constructor
+
 	public function __construct(){
 		parent::__construct();
 
 		$this->setPacker([
 			"Auth",
+			"Session",
 			"Form"=>[
 				"cssFramework"=>"bootstrap",
 			],
@@ -39,11 +42,20 @@ class AuthController extends AppController{
 		];
 		$this->Packer->Auth->loginCheck();
 
+		if($this->Packer->Session->read("sendMsg")){
+			$this->set("sendMsg",$this->Packer->Session->flash("sendMsg"));
+		}
+
 	}
+
+	# index
 
 	public function index(){
-
+		$this->set("authData",$this->Packer->Auth->getAuthData());
 	}
+
+	# login
+
 	public function login(){
 
 		//データベースが接続できるかチェック用....
@@ -72,7 +84,7 @@ class AuthController extends AppController{
 
 
 				if($this->Packer->Auth->login($post)){
-
+					$this->redirect("@auth");
 
 				}
 				else{
@@ -87,7 +99,62 @@ class AuthController extends AppController{
 
 	}
 
+	# create
+
 	public function create(){
 
+		if(Request::$post){
+			$post=Request::$post;
+
+			// verify check
+			if(!$this->Packer->Form->verify()){
+				echo "Error! : 不正なアクセスと判断し、処理を中断しました。";
+				exit;
+			}
+
+			$validate=$this->Validator->Auth->verify($post,"validate_created");
+
+			if($validate){
+				$this->PackerUI->Form->setErrors($validate);
+			}
+			else{
+
+				try{
+					$saveObj=$this->Table->User->save();
+
+					$saveObj->tsBegin();
+
+					$saves=[
+						"username"=>$post["username"],
+						"password"=>$this->Packer->Auth->getPasswordHash($post["password"]),
+						"nickname"=>$post["nickname"],
+						"email"=>$post["email"],
+					];
+
+					$res=$saveObj->save($saves);
+
+				}catch(\Exception $e){
+					$saveObj->tsRollback();
+					echo $e;
+					exit;
+				}
+
+				$saveObj->tsCommit();
+				
+				$this->Packer->Session->write("sendMsg","アカウントの登録が完了しました");
+				$this->redirect("@auth/login");
+
+			}
+		}
+	}
+
+	# logout
+
+	public function logout(){
+		$this->autoRender=false;
+		
+		$this->Packer->Auth->logout();
+
+		$this->redirect("@auth/login");
 	}
 }

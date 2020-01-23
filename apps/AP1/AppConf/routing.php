@@ -35,6 +35,7 @@ return [
 		"/auth"=>"auth@index",
 		"/auth/login"=>"auth@login",
 		"/auth/create"=>"auth@create",
+		"/auth/logout"=>"auth@logout",
 	],
 
 	/**

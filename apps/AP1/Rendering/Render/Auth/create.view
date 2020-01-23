@@ -1,5 +1,57 @@
 <div class="wrap">
 	<h2>Auth Account Create</h2>
 
-	
+	<?php
+	$Forms=$this->UI->Form;
+	echo $Forms->start();
+	echo $Forms->setTokenHidden();
+	?>
+
+	<div class="form-group">
+		<table class="mb-3">
+		<tr>
+			<th width="200">username<span class="ml-3 text-danger">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("username",["style"=>"width:200px"]);
+				echo $Forms->setError("username");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th width="200">password<span class="ml-3 text-danger">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("password",["type"=>"password","style"=>"width:200px"]);
+				echo $Forms->setError("password");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th width="200">nickname<span class="ml-3 text-danger">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("nickname",["style"=>"width:300px"]);
+				echo $Forms->setError("nickname");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th width="200">email<span class="ml-3 text-danger">※</span></th>
+			<td>
+				<?php
+				echo $Forms->setInput("email",["style"=>"width:300px"]);
+				echo $Forms->setError("email");
+				?>
+			</td>
+		</tr>
+		</table>
+
+		<div class="text-center">
+			<?php echo $Forms->setButton("Create",["class"=>"btn btn-primary"]); ?>
+		</div>
+	</div>
+	<?php echo $Forms->end(); ?>
+
+	<a href="<?php echo $this->getUrl("@auth/login"); ?>">Back Auth Login</a>
 </div>
