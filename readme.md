@@ -47,3 +47,10 @@ Database Table Control Sample(CRUD).
 Test sample for account authentication.
 
 [https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_auth](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_auth)
+
+## # sample_packer_privateapi
+
+Private-API implementation test.
+
+[https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_privateapi](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_privateapi)
+
