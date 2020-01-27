@@ -54,3 +54,10 @@ Private-API implementation test.
 
 [https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_privateapi](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_packer_privateapi)
 
+## # sample_validate
+
+input form validate Sample. (Usually two types: server-side validator and client validator)
+
+[https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_validate](https://github.com/Nakajima-Satoru/mk2-testsamples/tree/sample_validate)
+
+
