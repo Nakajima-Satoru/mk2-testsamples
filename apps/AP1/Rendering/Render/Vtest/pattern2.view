@@ -1,13 +1,13 @@
 <div class="wrap">
 	<div class="crumb">
 		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
-		<span>Validate Test Sample01</span>
+		<span>Validate Test Sample02</span>
 	</div>
 	<div class="ttl">
-		<h2>Validate Test Sample01</h2>
+		<h2>Validate Test Sample02</h2>
 	</div>
 
-	<p>Validation execution test sample by client side.</p>
+	<p>Sample implementation of validation on client side using client validator.</p>
 	
 	<?php
 	$Form=$this->UI->Form;
