@@ -32,6 +32,8 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/vtest"=>"vtest@index",
+		"/vtest/pattern2"=>"vtest@pattern2",
 	],
 
 	/**

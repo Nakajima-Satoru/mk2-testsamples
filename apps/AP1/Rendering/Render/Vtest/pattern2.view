@@ -1,0 +1,129 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>Validate Test Sample01</span>
+	</div>
+	<div class="ttl">
+		<h2>Validate Test Sample01</h2>
+	</div>
+
+	<p>Validation execution test sample by client side.</p>
+	
+	<?php
+	$Form=$this->UI->Form;
+	echo $Form->start(["id"=>"vtestForm"]);
+	echo $Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+
+		<table class="mb-4">
+		<tr>
+			<th class="require">name</th>
+			<td>
+				<?php
+				echo $Form->setInput("name",["style"=>"width:250px","placeholder"=>"Ex : Rick Dias."]);
+				echo $Form->setError("name",["data-name"=>"name"]);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">email</th>
+			<td>
+				<?php
+				echo $Form->setInput("email",["style"=>"width:400px","placeholder"=>"Ex : abcd@xxxx.com"]);
+				echo $Form->setError("email",["data-name"=>"email"]);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">Telephone Number</th>
+			<td>
+				<?php
+				echo $Form->setInput("telno",["style"=>"width:300px","placeholder"=>"Ex : 01-0001-0000"]);
+				echo $Form->setError("telno",["data-name"=>"telno"]);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">category</th>
+			<td>
+				<?php
+				$categoryList=[
+					0=>"Bag Fix",
+					1=>"Installation",
+					2=>"Request/Request",
+					3=>"other",
+				];
+				echo $Form->setPulldown("category",$categoryList,["empty"=>"--select category--","style"=>"width:400px","placeholder"=>"Ex : abcd@xxxx.com"]);
+				echo $Form->setError("category",["data-name"=>"category"]);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>Homepage URL</th>
+			<td>
+				<?php
+				echo $Form->setInput("hpurl",["style"=>"width:350px","placeholder"=>"Ex : https://www.xxxxx.jp"]);
+				echo $Form->setError("hpurl",["data-name"=>"hpurl"]);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">message</th>
+			<td>
+				<?php
+				echo $Form->setTextarea("message",["style"=>"height:250px"]);
+				echo $Form->setError("message",["data-name"=>"message"]);
+				?>
+			</td>
+		</tr>
+		</table>
+
+		<div class="text-center">
+			<?php echo $this->UI->Form->setButton("Send",["type"=>"button","class"=>"btn btn-primary btn-submit"]); ?>
+		</div>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+</div>
+
+<?php
+/**
+ * ------------ Client Validator Script Area ------------
+ */
+?>
+
+<div id="cvCache" style="display:none"><?php echo $cvCache; ?></div>
+<script src="<?php echo $this->getUrl("@vtest/pattern2?get_cvscript=1"); ?>"></script>
+<script>
+$(function(){
+
+	$(".btn-submit").on("click",function(){
+
+		// client validate
+		var validate=clientValidator.verify("vtestForm","cvCache");
+
+		if(validate){
+			$("#vtestForm *[name]").removeClass("is-invalid");
+			$(".invalid-feedback").css("display","").text("");
+			Object.keys(validate).forEach(function(field){
+				$("[name="+field+"]").addClass("is-invalid");
+				$(".invalid-feedback[data-name="+field+"]").css("display","block").text(validate[field]);
+			});
+		}
+		else
+		{
+			$("#vtestForm").submit();
+		}	
+
+	});
+
+});
+</script>
+
+<?php
+/**
+ * ----------------------------------------------------
+ */
+?>

@@ -1,0 +1,89 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>Validate Test Sample01</span>
+	</div>
+	<div class="ttl">
+		<h2>Validate Test Sample01</h2>
+	</div>
+
+	<p>Normal server side validation execution test sample.</p>
+	
+	<?php
+	$Form=$this->UI->Form;
+	echo $Form->start();
+	echo $Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+
+		<table class="mb-4">
+		<tr>
+			<th class="require">name</th>
+			<td>
+				<?php
+				echo $Form->setInput("name",["style"=>"width:250px","placeholder"=>"Ex : Rick Dias."]);
+				echo $Form->setError("name");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">email</th>
+			<td>
+				<?php
+				echo $Form->setInput("email",["style"=>"width:400px","placeholder"=>"Ex : abcd@xxxx.com"]);
+				echo $Form->setError("email");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">Telephone Number</th>
+			<td>
+				<?php
+				echo $Form->setInput("telno",["style"=>"width:300px","placeholder"=>"Ex : 01-0001-0000"]);
+				echo $Form->setError("telno");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">category</th>
+			<td>
+				<?php
+				$categoryList=[
+					0=>"Bag Fix",
+					1=>"Installation",
+					2=>"Request/Request",
+					3=>"other",
+				];
+				echo $Form->setPulldown("category",$categoryList,["empty"=>"--select category--","style"=>"width:400px","placeholder"=>"Ex : abcd@xxxx.com"]);
+				echo $Form->setError("category");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>Homepage URL</th>
+			<td>
+				<?php
+				echo $Form->setInput("hpurl",["style"=>"width:350px","placeholder"=>"Ex : https://www.xxxxx.jp"]);
+				echo $Form->setError("hpurl");
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th class="require">message</th>
+			<td>
+				<?php
+				echo $Form->setTextarea("message",["style"=>"height:250px"]);
+				echo $Form->setError("message");
+				?>
+			</td>
+		</tr>
+		</table>
+
+		<div class="text-center">
+			<?php echo $this->UI->Form->setButton("Send",["class"=>"btn btn-primary"]); ?>
+		</div>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+</div>

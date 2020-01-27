@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo $this->getUrl("/"); ?>css/style.css">
 <title><?php if(!empty($pageTitle)){ echo $pageTitle." | "; } ?>mark2 - PHP Framework Installer</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 

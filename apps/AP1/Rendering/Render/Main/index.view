@@ -1,6 +1,7 @@
 <div class="wrap text-center">
 	<div class="pt-5 pb-5">
 		<h2>Install Complete!</h2>
-		<p class="h5">あとはご自由に！</p>
 	</div>
+	<a href="<?php echo $this->getUrl("@vtest"); ?>" class="mr-2">Validate Test</a>
+	<a href="<?php echo $this->getUrl("@vtest/pattern2"); ?>">Validate Test (client Validator)</a>
 </div>
