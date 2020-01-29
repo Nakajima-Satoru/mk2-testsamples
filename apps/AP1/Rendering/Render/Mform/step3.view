@@ -1,0 +1,50 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Step3</span>
+	</div>
+
+	<h2>MultiPage Form - Step3</h2>
+
+	<?php
+	$this->set("step",3);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+	<?php
+	echo $this->UI->Form->start();
+	echo $this->UI->Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+	<table>
+	<tr>
+		<th class="require" width="250">select category</th>
+		<td>
+			<?php
+			$categoryList=[
+				0=>"Category00",
+				1=>"Category01",
+				2=>"Category02",
+				3=>"Category03",
+				4=>"Category04",
+				5=>"Category05",
+				6=>"Category06",
+			];
+
+			echo $this->UI->Form->setRadio("category",$categoryList);
+			echo $this->UI->Form->setError("category");
+			?>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<div class="text-center">
+		<?php echo $this->UI->Form->setButton("Next Step",["class"=>"btn btn-primary btn-lg"]); ?>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+
+	<a href="<?php echo $this->getUrl("@mform/step2?data_keep=1"); ?>">Back to Step2</a>
+</div>

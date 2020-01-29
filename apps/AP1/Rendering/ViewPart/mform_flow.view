@@ -1,0 +1,43 @@
+<style>
+.mform_flow{
+	display:table;
+	width:100%;
+	margin:30px 0px;
+}
+.mform_flow li{
+	display:table-cell;
+	position:relative;
+	width:16.666666666%;
+}
+.mform_flow li p{
+	border:solid 1px #aaa;
+	color:#aaa;
+	padding:10px 0px;
+	font-size:15px;
+	text-align:center;
+	margin:0 20px;
+}
+.mform_flow li:after{
+	content:"->";
+	color:#aaa;
+	position:absolute;
+	right:-10px;
+	top:10px;
+}
+.mform_flow li:last-child:after{
+	display:none;
+}
+.mform_flow li.active p{
+	border:solid 1px #fa5;
+	color:#fa5;
+}
+</style>
+
+<ul class="mform_flow">
+	<li class="<?php if($step==1){ echo "active"; } ?>"><p>Step1</p></li>
+	<li class="<?php if($step==2){ echo "active"; } ?>"><p>Step2</p></li>
+	<li class="<?php if($step==3){ echo "active"; } ?>"><p>Step3</p></li>
+	<li class="<?php if($step==4){ echo "active"; } ?>"><p>Step4</p></li>
+	<li class="<?php if($step==5){ echo "active"; } ?>"><p>Confirm</p></li>
+	<li class="<?php if($step==6){ echo "active"; } ?>"><p>Complete</p></li>
+</ul>

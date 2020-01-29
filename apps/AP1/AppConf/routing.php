@@ -32,6 +32,12 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/mform/step1"=>"mform@step1",
+		"/mform/step2"=>"mform@step2",
+		"/mform/step3"=>"mform@step3",
+		"/mform/step4"=>"mform@step4",
+		"/mform/confirm"=>"mform@confirm",
+		"/mform/complete"=>"mform@complete",
 	],
 
 	/**

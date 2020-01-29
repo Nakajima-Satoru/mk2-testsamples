@@ -1,0 +1,40 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Step2</span>
+	</div>
+
+	<h2>MultiPage Form - Step2</h2>
+
+	<?php
+	$this->set("step",2);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+	<?php
+	echo $this->UI->Form->start();
+	echo $this->UI->Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+	<table>
+	<tr>
+		<th class="require" width="250">free textarea</th>
+		<td>
+			<?php
+			echo $this->UI->Form->setTextarea("free_textarea",["style"=>"height:300px;resize:none;"]);
+			echo $this->UI->Form->setError("free_textarea");
+			?>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<div class="text-center">
+		<?php echo $this->UI->Form->setButton("Next Step",["class"=>"btn btn-primary btn-lg"]); ?>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+
+	<a href="<?php echo $this->getUrl("@mform/step1?data_keep=1"); ?>">Back to Step1</a>
+</div>

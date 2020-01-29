@@ -1,0 +1,50 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Step4</span>
+	</div>
+
+	<h2>MultiPage Form - Step4</h2>
+
+	<?php
+	$this->set("step",4);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+	<?php
+	echo $this->UI->Form->start();
+	echo $this->UI->Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+	<table>
+	<tr>
+		<th class="require" width="250">like fruit</th>
+		<td>
+			<?php
+			$likesweetsList=[
+				"apple",
+				"orange",
+				"pango",
+				"pineapple",
+				"kiwi_fruit",
+				"melon",
+				"sanma",
+			];
+
+			echo $this->UI->Form->setCheckbox("like_fruit",$likesweetsList);
+			echo $this->UI->Form->setError("like_fruit");
+			?>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<div class="text-center">
+		<?php echo $this->UI->Form->setButton("To Confirm",["class"=>"btn btn-primary btn-lg"]); ?>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+
+	<a href="<?php echo $this->getUrl("@mform/step3?data_keep=1"); ?>">Back to Step3</a>
+</div>

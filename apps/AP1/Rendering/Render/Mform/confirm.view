@@ -1,0 +1,111 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Confirm</span>
+	</div>
+
+	<h2>MultiPage Form - Confirm</h2>
+
+	<?php
+	$this->set("step",5);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+	<p>Follow the procedure below.</p>
+
+	<h3>Step1</h3>
+	<div class="form-group">
+		<table>
+		<tr>
+			<th width="250">your_name</th>
+			<td>
+				<?php echo sanitize($cache["step1"]["your_name"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>
+				<?php echo sanitize($cache["step1"]["email"]); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>Telephone Number</th>
+			<td>
+				<?php echo sanitize($cache["step1"]["telno"]); ?>
+			</td>
+		</tr>
+		</table>
+	</div>
+	
+	<h3>Step2</h3>
+	
+	<div class="form-group">
+		<table>
+		<tr>
+			<th width="250">free textarea</th>
+			<td>
+				<?php echo nl2br(sanitize($cache["step2"]["free_textarea"])); ?>
+			</td>
+		</tr>
+		</table>
+	</div>
+
+	<h3>Step3</h3>
+	<div class="form-group">
+		<table>
+		<tr>
+			<th width="250">select category</th>
+			<td>
+				<?php
+				$categoryList=[
+					0=>"Category00",
+					1=>"Category01",
+					2=>"Category02",
+					3=>"Category03",
+					4=>"Category04",
+					5=>"Category05",
+					6=>"Category06",
+				];
+				echo $categoryList[$cache["step3"]["category"]]; ?>
+			</td>
+		</tr>
+		</table>
+	</div>
+
+	<h3>Step4</h3>
+	<div class="form-group">
+		<table>
+		<tr>
+			<th width="250">like fruit</th>
+			<td>
+				<?php
+				$likesweetsList=[
+					"apple",
+					"orange",
+					"pango",
+					"pineapple",
+					"kiwi_fruit",
+					"melon",
+					"sanma",
+				];
+
+				foreach($cache["step4"]["like_fruit"] as $cf){
+					echo "<span class='mr-2'>".$likesweetsList[$cf].",</span>";
+				}
+				?>
+			</td>
+		</tr>
+		</table>
+	</div>
+
+	<div class="text-center">
+		<?php 
+		echo $this->UI->Form->start();
+		echo $this->UI->Form->setTokenHidden();
+		echo $this->UI->Form->setButton("Send",["class"=>"btn btn-primary btn-lg"]);
+		echo $this->UI->Form->end();
+		?>
+	</div>
+
+	<a href="<?php echo $this->getUrl("@mform/step4?data_keep=1"); ?>">Back to Step4</a>
+</div>

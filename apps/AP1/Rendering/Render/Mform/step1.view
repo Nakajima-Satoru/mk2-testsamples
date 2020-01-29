@@ -1,0 +1,60 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Step1</span>
+	</div>
+
+	<h2>MultiPage Form - Step1</h2>
+
+	<?php
+	$this->set("step",1);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+
+	<?php
+	echo $this->UI->Form->start();
+	echo $this->UI->Form->setTokenHidden();
+	?>
+
+	<div class="form-group">
+	<table>
+	<tr>
+		<th class="require" width="250">Name</th>
+		<td>
+			<?php
+			echo $this->UI->Form->setInput("your_name",["style"=>"max-width:300px","placeholder"=>"Ex : Yamada Tarou"]);
+			echo $this->UI->Form->setError("your_name");
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th class="require">Email</th>
+		<td>
+			<?php
+			echo $this->UI->Form->setInput("email",["style"=>"max-width:300px","placeholder"=>"Ex : test@email.co.jp"]);
+			echo $this->UI->Form->setError("email");
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th class="require">Telephone Number</th>
+		<td>
+			<?php
+			echo $this->UI->Form->setInput("telno",["style"=>"max-width:200px","placeholder"=>"Ex : 010-0000-2222"]);
+			echo $this->UI->Form->setError("telno");
+			?>
+		</td>
+	</tr>
+	</table>
+	</div>
+
+	<div class="text-center">
+		<?php echo $this->UI->Form->setButton("Next Step",["class"=>"btn btn-primary btn-lg"]); ?>
+	</div>
+
+	<?php echo $this->UI->Form->end(); ?>
+
+	<a href="<?php echo $this->getUrl("/"); ?>">Back to Top</a>
+
+</div>

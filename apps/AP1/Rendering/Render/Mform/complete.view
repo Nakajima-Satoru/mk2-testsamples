@@ -1,0 +1,20 @@
+<div class="wrap">
+	<div class="crumb">
+		<a href="<?php echo $this->getUrl("/"); ?>">Top</a>
+		<span>MultiPage Form - Complete!</span>
+	</div>
+
+	<h2>MultiPage Form - Complete!</h2>
+
+	<?php
+	$this->set("step",6);
+	echo $this->getViewPart("mform_flow");
+	?>
+
+	<p>The procedure has been completed.</p>
+
+	<div class="text-center">
+		<a href="<?php echo $this->getUrl("/"); ?>">Back to Top</a>
+	</div>
+
+</div>
