@@ -49,6 +49,17 @@ table tr td{
 table tr th{
 	background:#444;
 }
+table tr th.require:after{
+	content:"require";
+	background:#f00;
+	color:#fff;
+	font-size:13px;
+	padding:0px 6px;
+	line-height:1.5rem;
+	display:inline-block;
+	margin-left:10px;
+	vertical-align:middle;
+}
 
 dl dd{
 	margin-top:10px;
@@ -128,8 +139,11 @@ footer{
 	margin:0px auto;
 }
 .invalid-feedback{
-	color:#ff2211;
-	font-size:120%;
+	background:#ee1111;
+	color:#fff;
+	line-height:2.2em;
+	padding:0px 10px;
+	font-size:14px;
 }
 .form-control{
 	background:#222;
