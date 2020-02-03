@@ -31,7 +31,7 @@ return[
 		"username"=>"root",
 		"password"=>"",
 		"port"=>3306,
-		"database"=>"mk2dbsample",
+		"database"=>"mk2dbsample_2",
 		"encoding"=>"utf8mb4",
 	],
 
@@ -42,7 +42,7 @@ return[
 	 * Test database connection information.
 	 * 
 	 */
-
+/*
 	"test"=>[
 		"type"=>"mysql",
 		"host"=>"localhost",
@@ -52,5 +52,5 @@ return[
 		"database"=>"mk2dbsample_test",
 		"encoding"=>"utf8mb4",
 	],
-	
+*/	
 ];
