@@ -32,6 +32,12 @@ return [
 
 	"pages"=>[
 		"/"=>"main@index",
+		"/ormtest"=>"ormtest@index",
+		"/ormtest/select1"=>"ormtest@select1",
+		"/ormtest/select2"=>"ormtest@select2",
+		"/ormtest/select3"=>"ormtest@select3",
+		"/ormtest/save1"=>"ormtest@save1",
+
 	],
 
 	/**

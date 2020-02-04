@@ -1,0 +1,46 @@
+<style>
+.results{
+	max-height:300px;
+	overflow:auto;
+}
+</style>
+<div class="wrap">
+	<h2>Orm Select 2</h2>
+	<br>
+	<h3>1.get list recode. (Field and value column specification)</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1->select()
+	->fields("name","code")
+	->lists();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_1); ?></pre>
+	<hr>
+	<h3>2. sort(id DESC)</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1->select()
+	->orderBy("id","desc")
+	->lists();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_2); ?></pre>
+	<hr>
+	<h3>3. Record extraction limit</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1->select()
+	->limit(3)
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_3); ?></pre>
+	<hr>
+	<h3>4. Get record information of specified page number</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1->select()
+	->limit(3)
+	->pageIndex(2)
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_4); ?></pre>
+	<hr>
+	<h3>5. Get pagination information</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1->select()
+	->paginate(3,2)
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_5); ?></pre>
+	<hr>
+
+
+	<div class="text-center">
+		<a href="<?php echo $this->getUrl("@ormtest/select3"); ?>">Mext select3</a>
+	</div>
+</div>

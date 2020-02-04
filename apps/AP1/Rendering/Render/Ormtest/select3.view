@@ -1,0 +1,80 @@
+<style>
+.results{
+	max-height:300px;
+	overflow:auto;
+}
+</style>
+<div class="wrap">
+	<h2>Orm Select 3 (Association)</h2>
+	<br>
+	<h3>1. hasMany (Table1 (1) -> Table1a (many))</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1
+	->associate([
+		"hasMany"=>[
+			"Table1a",
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_1); ?></pre>
+	<hr>
+	<h3>2. hasMany (Table1 (1) -> Table1a (many)) pattern2</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1
+	->hasMany(
+		"Table1a"=>[
+			"fields"=>["table1_id","subname"],
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_2); ?></pre>
+	<hr>
+	<h3>3. hasOne (Table1 (1) -> Table1a (1))</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1
+	->associate([
+		"hasOne"=>[
+			"Table1a",
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_3); ?></pre>
+	<hr>
+	<h3>4. hasOne (Table1 (1) -> Table1a (1)) pattern2</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1
+	->hasOne(
+		"Table1a"=>[
+			"fields"=>["table1_id","subname"],
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_4); ?></pre>
+	<hr>
+	<h3>5. belongsTo (Table1a (1) -> Table1 (1))</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1a
+	->associate([
+		"belongsTo"=>[
+			"Table1",
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_5); ?></pre>
+	<hr>
+	<h3>6. belongTo (Table1a (1) -> Table1 (1)) pattern2</h3>
+	<pre style='border:solid 1px #aaa;padding:10px;margin-bottom:20px'>[Code] : $this->Table->Table1a
+	->belongsTo(
+		"Table1"=>[
+			"fields"=>["id","name","tablea1_id"],
+		],
+	])
+	->select()
+	->all();</pre>
+	<pre class="results">[Result] :<?php print_r($sample_6); ?></pre>
+	<hr>
+
+	<div class="text-center">
+		<a href="<?php echo $this->getUrl("@ormtest/save1"); ?>">Next save1</a>
+	</div>
+</div>
