@@ -37,7 +37,7 @@ return [
 		"/ormtest/select2"=>"ormtest@select2",
 		"/ormtest/select3"=>"ormtest@select3",
 		"/ormtest/save1"=>"ormtest@save1",
-
+"/ormtest/test1"=>"ormtest@test1",
 	],
 
 	/**

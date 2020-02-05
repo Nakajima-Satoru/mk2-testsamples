@@ -200,4 +200,13 @@ class OrmtestController extends AppController{
 
 		
 	}
+
+	public function test1(){
+		$this->autoRender=false;
+
+		$this->setTable(["New"]);
+		debug($this->Table->New);
+		
+		debug($this->Table->New->select()->all());
+	}
 }
