@@ -209,4 +209,28 @@ class OrmtestController extends AppController{
 		
 		debug($this->Table->New->select()->all());
 	}
+	public function test2(){
+		$this->autoRender=false;
+/*
+		$checkTable=new Table([
+			"setSchema"=>[
+				"type"=>"mysql",
+				"host"=>"localhost",
+				"port"=>3306,
+				"username"=>"root",
+				"password"=>"",
+			],
+		]);
+
+		debug($checkTable->connectCheck());
+*/
+		/*
+		$this->setTable(["New"]);
+		debug($this->Table->New->connectCheck());
+		*/
+/*
+		$this->setTable(["Table1a"]);
+		debug($this->Table->Table1a->connectCheck());
+*/
+	}
 }

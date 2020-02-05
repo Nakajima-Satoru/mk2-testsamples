@@ -7,7 +7,7 @@ class NewTable extends Table{
 	public $setSchema=[
 		"type"=>"mysql",
 		"host"=>"localhost",
-		"port"=>3306,
+		"port"=>3302,
 		"username"=>"root",
 		"password"=>"Buteneko19#",
 		"database"=>"rmk2test",
