@@ -156,4 +156,45 @@ class MigrateController extends AppController{
 		}
 		
 	}
+
+	public function sqlite_test(){
+
+		$Table4=new Table([
+			"setSchema"=>[
+				"type"=>"sqlite",
+				"database"=>"SQLITEDB.sqlite3",
+			],
+		]);
+
+		$t4m=$Table4->migrate()->makeSchema()
+			->create("table01",[
+				"comment"=>"テーブル01",
+			])
+			->setField("id",[
+				"type"=>"int",
+				"length"=>11,
+				"primaryKey"=>true,
+				"autoIncrement"=>true,
+				"comment"=>"ID",
+			])
+			->setField("created",[
+				"type"=>"datetime",
+				"comment"=>"ID",
+			])
+			->setField("modified",[
+				"type"=>"datetime",
+				"comment"=>"ID",
+			])
+			->setField("is_deleted",[
+				"type"=>"integer",
+				"default"=>0,
+				"notNull"=>true,
+				"comment"=>"ID",
+			])
+		;
+
+		debug($t4m->getSqlCode());
+		$t4m->run();
+
+	}
 }

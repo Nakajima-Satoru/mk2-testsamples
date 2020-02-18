@@ -33,6 +33,7 @@ return [
 	"pages"=>[
 		"/"=>"main@index",
 		"/migrate"=>"migrate@index",
+		"/migrate/sqlite_test"=>"migrate@sqlite_test",
 	],
 
 	/**
