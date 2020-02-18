@@ -191,10 +191,53 @@ class MigrateController extends AppController{
 				"notNull"=>true,
 				"comment"=>"ID",
 			])
+			->setField("name",[
+				"type"=>"varchar",
+			])
+			->setField("code",[
+				"type"=>"varchar",
+			])
+			->create("table02")
+			->setField("id",[
+				"type"=>"int",
+				"length"=>11,
+				"primaryKey"=>true,
+				"autoIncrement"=>true,
+				"comment"=>"ID",
+			])
+			->setField("created",[
+				"type"=>"datetime",
+				"comment"=>"ID",
+			])
+			->setField("modified",[
+				"type"=>"datetime",
+				"comment"=>"ID",
+			])
+			->setField("is_deleted",[
+				"type"=>"integer",
+				"default"=>0,
+				"notNull"=>true,
+				"comment"=>"ID",
+			])
+			->insert("table01",[
+				"created"=>date_format(date_create("now"),"Y-m-d H:i:s"),
+				"modified"=>date_format(date_create("now"),"Y-m-d H:i:s"),
+				"name"=>"aaaa",
+				"code"=>"a1234",
+			])
+			->insert("table01",[
+				"created"=>date_format(date_create("now"),"Y-m-d H:i:s"),
+				"modified"=>date_format(date_create("now"),"Y-m-d H:i:s"),
+				"name"=>"bbbb",
+				"code"=>"b2345",
+			])
 		;
 
 		debug($t4m->getSqlCode());
 		$t4m->run();
+
+		$Table4->table="table01";
+		debug($Table4->select()->all());
 
 	}
 }
