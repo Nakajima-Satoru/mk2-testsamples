@@ -1,4 +1,4 @@
-# Test Sample_0001
+# Test Sample (Direct)
 
 The system screen is displayed immediately below the directory.
 
