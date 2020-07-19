@@ -70,5 +70,5 @@ class MainController extends AppController{
 
 <hr>
 
-HP : https://www.mk2-php.tech/  
+HP : https://www.mk2-php.com/  
 Copylight (C) Nakajima Satoru.
