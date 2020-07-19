@@ -1,4 +1,4 @@
-# Test Sample_0004
+# Test Sample(Auto Routing)
 
 When the routing mode is set to "auto".
 
@@ -46,7 +46,27 @@ return [
 ];
 ```
 
-After that, set up various controllers and actions and verify whether they can actually be accessed.
+<hr>
+
+## 3. Action setting in Controller
+
+Set up various controllers and actions and verify whether they can actually be accessed.
+
+Below is the code for MainController.
+
+```php
+<?php
+
+namespace mk2\core;
+
+Import::Controller("App");
+
+class MainController extends AppController{
+
+	# Top page
+	public function index(){}
+}
+```
 
 <hr>
 
