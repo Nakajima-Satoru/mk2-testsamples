@@ -13,79 +13,79 @@ class Form1Validator extends Validator{
 		"your_name"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"お名前が入力されていません",
+				"message"=>"No name entered",
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"お名前は100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"your_name_kana"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"お名前(フリガナ)が入力されていません",
+				"message"=>"No name(kana) entered",
 			],
 			[
 				"rule"=>"isKatakana",
-				"message"=>"お名前(フリガナ)は全角カタカナと全角空白・半角空白のみで入力してください",
+				"message"=>"Enter only full-width katakana and full-width/half-width spaces",
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"お名前(フリガナ)は100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"email"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"Emailが入力されていません",
+				"message"=>"No Email entered",
 			],
 			[
 				"rule"=>"isEmail",
-				"message"=>"不正なEmailフォーマット形式と判断されました",
+				"message"=>"Judged as an invalid email format",
 			],
 			[
 				"rule"=>["maxLength",255],
-				"message"=>"Emailは255文字以内で入力してください",
+				"message"=>"Enter within 255 characters",
 			],
 		],
 		"telno"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"TELが入力されていません",
+				"message"=>"No TEL entered",
 			],
 			[
 				"rule"=>"isTel",
-				"message"=>"不正なTELフォーマット形式と判断されました",
+				"message"=>"Judged as invalid TEL format",
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"TELは100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"hpurl"=>[
 			[
 				"rule"=>"isUrl",
-				"message"=>"不正なURL形式と判断されました",
+				"message"=>"Judged as an invalid URL format",
 			],
 			[
 				"rule"=>["maxLength",255],
-				"message"=>"HP URLは255文字以内で入力してください",
+				"message"=>"Enter within 255 characters",
 			],
 		],
 		"category"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"カテゴリーが選択されていません",
+				"message"=>"Category not selected",
 			],
 		],
 		"message"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"メッセージ内容が入力されていません",
+				"message"=>"Message content has not been entered",
 			],
 			[
-				"rule"=>["maxLength",3000],
-				"message"=>"メッセージ内容は3000文字以内で入力してください",
+				"rule"=>["maxLength",5000],
+				"message"=>"Enter within 5000 characters",
 			],
 		],
 	];

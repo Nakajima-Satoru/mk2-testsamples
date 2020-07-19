@@ -7,18 +7,18 @@
 
 	<br>
 
-	<p>下記内容で送信テスト致します。</p>
+	<p>We accept the following contents.</p>
 	
 	<div class="form-group">
 		<table class="mb-4">
 		<tr>
-			<th style="width:200px">お名前</th>
+			<th style="width:200px">your name</th>
 			<td>
 				<?php echo sanitize($cache["your_name"]); ?>
 			</td>
 		</tr>
 		<tr>
-			<th>お名前[フリガナ]</th>
+			<th>your name[kana]</th>
 			<td>
 				<?php echo sanitize($cache["your_name_kana"]); ?>
 			</td>
@@ -48,7 +48,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>問い合わせ内容</th>
+			<th>Message</th>
 			<td>
 				<?php echo nl2br(sanitize($cache["message"])); ?>
 			</td>
@@ -60,7 +60,7 @@
 			$Forms=$this->UI->Form;
 			echo $Forms->start();
 			echo $Forms->setTokenHidden();
-			echo $Forms->setButton("送信テストする",["class"=>"btn btn-primary btn-lg"]);
+			echo $Forms->setButton("Submit",["class"=>"btn btn-primary btn-lg"]);
 			echo $Forms->end();
 			?>
 		</div>
