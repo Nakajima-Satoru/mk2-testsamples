@@ -68,5 +68,5 @@ new Mk2Gen();
 
 <hr>
 
-HP : https://www.mk2-php.tech/  
+HP : https://www.mk2-php.com/  
 Copylight (C) Nakajima Satoru.
