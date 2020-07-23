@@ -2,7 +2,7 @@
 	<h2>Database Table Test Sample</h2>
 
 	<?php
-	if(!empty($res["flg"])){
+	if(!empty($res)){
 	?>
 
 		<div class="text-right mb-3">
@@ -23,7 +23,7 @@
 		?>
 
 		<?php
-		if($res["result"]){
+		if($res->result){
 		?>
 
 		<table class="mb-3">
@@ -35,7 +35,7 @@
 			<th width="150"></th>	
 		</tr>
 		<?php
-		foreach($res["result"] as $r_){
+		foreach($res->result as $r_){
 		?>
 		<tr>
 			<td><?php echo date_format(date_create($r_->created),"Y-m-d H:i"); ?></td>
@@ -52,7 +52,7 @@
 		?>
 		</table>
 
-		<?php echo $this->UI->Paginate->output($res["paginate"]); ?>
+		<?php echo $this->UI->Paginate->output($res->paginate); ?>
 
 		<script>
 		$(function(){

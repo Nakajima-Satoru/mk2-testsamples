@@ -2,15 +2,15 @@
 	<h2>Database Table Test Sample(Confirm)</h2>
 	<br>
 
-	<p>下記内容をレコード登録/更新します。</p>
+	<p>Register/update the following contents.</p>
 
 	<dl>
 		<dt>name</dt>
-		<dd><?php echo sanitize($cache["post"]["name"]); ?></dd>
+		<dd><?php echo sanitize($cache["name"]); ?></dd>
 		<dt>code</dt>
-		<dd><?php echo sanitize($cache["post"]["code"]); ?></dd>
+		<dd><?php echo sanitize($cache["code"]); ?></dd>
 		<dt>caption</dt>
-		<dd><?php echo nl2br(sanitize($cache["post"]["caption"])); ?></dd>
+		<dd><?php echo nl2br(sanitize($cache["caption"])); ?></dd>
 	</dl>
 
 	<div class="text-center">
@@ -23,7 +23,7 @@
 	</div>
 
 	<?php
-	if(!empty($cache["post"]["id"])){
+	if(!empty($cache["id"])){
 	?>
 	<a href="<?php echo $this->getUrl("@dbtable/edit/?data_keep=1"); ?>">Back to</a>
 	<?php

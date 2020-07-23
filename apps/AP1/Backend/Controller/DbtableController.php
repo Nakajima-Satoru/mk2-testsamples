@@ -18,7 +18,7 @@ Import::Controller("App");
 
 class DbtableController extends AppController{
 
-	private $formCache="__cache_dbtable1_edit";
+	const FORM_CACHE="__cache_dbtable1_edit";
 
 	public function __construct(){
 		parent::__construct();
@@ -27,7 +27,9 @@ class DbtableController extends AppController{
 			"Dbtable1",
 		])
 		->setPacker([
-			"Form",
+			"Form"=>[
+				"cssFramework"=>"bootstrap",
+			],
 			"Session",
 			"Paginate",
 		]);
@@ -43,7 +45,8 @@ class DbtableController extends AppController{
 	public function index(){
 
 		// search recode..
-		$this->set("res",$this->Model->Dbtable1->search(Request::$get));
+		$res=$this->Model->Dbtable1->get(null,Request::$get);
+		$this->set("res",$res);
 
 	}
 
@@ -56,38 +59,33 @@ class DbtableController extends AppController{
 
 			// if Request Data(POST) then...
 
-			$post=Request::$post;
-
 			//verify check
 			if(!$this->Packer->Form->verify()){
 				echo "ERROR! : Processing was interrupted due to unauthorized access.";
 				exit;
 			}
 
-			if($id){
-				$post["id"]=$id;
-			}
+			$post=Request::$post;
+
+			$post["id"]=$id;
 
 			// input data validate..
-			$res=$this->Model->Dbtable1->validate($post);
+			$vres=$this->Model->Dbtable1->validate($post);
 
-			if(!empty($res["error"])){
+			if($vres){
+
 				// output validate error message..
-				$this->Packer->Form->setErrors($res["validate"]);
+				$this->Packer->Form->setErrors($vres);
+
 			}
 			else
 			{
-				$cache=[
-					"post"=>$post,
-					"processToken"=>$res["processToken"],
-				];
 
 				// write session cache..
-				$this->Packer->Session->write($this->formCache,$cache);
+				$this->Packer->Session->write(self::FORM_CACHE,$post);
 
 				// next confirm page..
-				$this->redirect("@dbtable/confirm");
-				return;
+				return $this->redirect("@dbtable/confirm/");
 
 			}
 
@@ -100,21 +98,20 @@ class DbtableController extends AppController{
 			if($id){
 
 				// get recode data...
-				$res=$this->Model->Dbtable1->getData($id);
+				$res=$this->Model->Dbtable1->get($id);
 
-				if(!empty($res["flg"])){
-					Request::$post=$res["result"];
+				if(!empty($res)){
+					Request::$post=(array)$res;
 				}
 				else{
 					$this->Packer->Session->write("dangerMsg","Editing stopped because no records were found.");
-					$this->redirect("@dbtable");
-					return;
+					return $this->redirect("@dbtable/");
 				}
 			}
 
 			if(!empty(Request::$get["data_keep"])){
-				$cache=$this->Packer->Session->read($this->formCache);
-				Request::$post=$cache["post"];
+				$cache=$this->Packer->Session->read(self::FORM_CACHE);
+				Request::$post=$cache;
 			}
 
 
@@ -126,38 +123,35 @@ class DbtableController extends AppController{
 
 	public function confirm(){
 
-		$cache=$this->Packer->Session->read($this->formCache);
+		// cache check
+		$cache=$this->Packer->Session->read(self::FORM_CACHE);
 		if(!$cache){
-			$this->redirect("@dbtable/edit");
+			$this->redirect("@dbtable/register/");
 		}
 
 		$this->set("cache",$cache);
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			//verify check
 			if(!$this->Packer->Form->verify()){
 				echo "ERROR! : Processing was interrupted due to unauthorized access.";
 				exit;
 			}
-			else
-			{
-
-				$res=$this->Model->Dbtable1->process($cache);
-
-				$this->Packer->Session->delete($this->formCache);
-				
-				if(!empty($res["flg"])){
-					$this->Packer->Session->write("sendMsg","Record update / registration completed");
-				}
-				else{
-					$this->Packer->Session->write("dangerMsg","Record update / registration failed. <br>Error : ".$res["error"]);
-				}
-				$this->redirect("@dbtable");
-				return;
-
+	
+			// recode insert/update process
+			$res=$this->Model->Dbtable1->process($cache);
+	
+			$this->Packer->Session->delete(self::FORM_CACHE);
+					
+			if(!empty($res["flg"])){
+				$this->Packer->Session->write("sendMsg","Record update/registration completed");
 			}
+			else{
+				$this->Packer->Session->write("dangerMsg","Record update/registration failed. <br>Error : ".$res["error"]);
+			}
+			return $this->redirect("@dbtable/");
+	
 		}
 	}
 
@@ -177,6 +171,5 @@ class DbtableController extends AppController{
 		$this->redirect("@dbtable");
 
 	}
-
 
 }
