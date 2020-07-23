@@ -16,10 +16,10 @@ It looks like the database is not connected or the database or table has not bee
 Connect to the database server and import the following SQL code to get ready.
 ```
 
-In this case, import the SQL data downloaded to the database server (MySQL server)  
- after pressing the "Get SQL Code" button below this message.  
-(Similar downloaded SQL data is in the ``mk2_sql.sql`` file in the ``apps/AP1/Web`` directory.)
+In this case, it is considered that the database connection settings are incorrect (database connection destination does not exist, etc.)   
+or the dedicated database is not installed on the database server.
 
+First, check the database connection destination.
 The database connection destination is the following by default.  
 Please change to a location where you can connect.
 
@@ -34,6 +34,12 @@ Please change to a location where you can connect.
 	"encoding"=>"utf8mb4",
 ],
 ```
+
+After confirming that it is connected to the database connection destination, if the database (schema) does not exist, import the SQL data.
+
+For SQL data, there is a SQL file in the following path, so import that.
+
+```apps/AP1/Web/mk2_sql.sql```
 
 ---
 
