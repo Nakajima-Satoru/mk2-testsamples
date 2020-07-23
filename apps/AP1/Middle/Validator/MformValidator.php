@@ -8,39 +8,39 @@ class MformValidator extends Validator{
 		"your_name"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"nameが未入力です",
+				"message"=>"name is not entered",
 			],
 			"N2"=>[
 				"rule"=>["maxLength",100],
-				"message"=>"nameは100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"email"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"emailが未入力です",
+				"message"=>"Email is not entered",
 			],
 			"N2"=>[
 				"rule"=>["maxLength",255],
-				"message"=>"emailは255文字以内で入力してください",
+				"message"=>"Enter within 255 characters",
 			],
 			"N3"=>[
 				"rule"=>"isEmail",
-				"message"=>"メールフォーマット形式ではありません",
+				"message"=>"Not in email format",
 			],
 		],
 		"telno"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"telephone numberが未入力です",
+				"message"=>"Telephone Number is not entered",
 			],
 			"N2"=>[
 				"rule"=>["maxLength",255],
-				"message"=>"telephone numberは255文字以内で入力してください",
+				"message"=>"",
 			],
 			"N3"=>[
 				"rule"=>"isTel",
-				"message"=>"電話番号のフォーマット形式ではありません",
+				"message"=>"Not in Telephone Number format",
 			],
 		],
 	];
@@ -49,11 +49,11 @@ class MformValidator extends Validator{
 		"free_textarea"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"free textareaが未入力です",
+				"message"=>"free text area is not entered",
 			],
 			"N2"=>[
 				"rule"=>["maxLength",4000],
-				"message"=>"free textareaは4000文字以内で入力してください",
+				"message"=>"Enter within 4000 characters",
 			],
 		],
 	];
@@ -62,7 +62,7 @@ class MformValidator extends Validator{
 		"category"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"categoryが未選択です",
+				"message"=>"category is not selected",
 			],
 		],
 	];
@@ -71,7 +71,7 @@ class MformValidator extends Validator{
 		"like_fruit"=>[
 			"N1"=>[
 				"rule"=>"notBlank",
-				"message"=>"like fruitが未選択です",
+				"message"=>"like fruit is not selected",
 			],
 		],
 	];

@@ -18,18 +18,17 @@ Import::Controller("App");
 
 class MformController extends AppController{
 
-	private const MFORM_CACHE="__mform_cache__";
-
-	private const MFORM_PARITY_SALT="foaire09fafaff78da0f987g0a9f711adoifjAOIFefag33f9f80ag";
+	const MFORM_CACHE="__mform_cache__";
+	const AUTHORITY_ERROR_MESSAGE="The process was interrupted, judging that it was an unauthorized access.";
 
 	public function __construct(){
 		parent::__construct();
 
 		$this->setPacker([
-			"Session",
 			"Form"=>[
 				"cssFramework"=>"bootstrap",
 			],
+			"Session",
 		])
 		->setValidator([
 			"Mform",
@@ -38,35 +37,79 @@ class MformController extends AppController{
 	}
 
 	/**
+	 * (private) verify
+	 */
+	private function _verify($checkTokenName=[]){
+
+		$cache=$this->Packer->Session->read(self::MFORM_CACHE);
+
+		if($cache){
+			
+			if($checkTokenName){
+
+				$juge=true;
+
+				// data exist check
+				foreach($checkTokenName as $ctn_){
+					if(empty($cache[$ctn_])){
+						$juge=false;
+					}
+				}
+
+				if($juge){
+					return $cache;
+				}
+				else
+				{
+					if(Request::$params["action"]!="step1"){
+						$this->redirect("@mform/step1/");
+					}
+				}
+			}
+			else
+			{
+				return $cache;
+			}
+
+		}
+		else
+		{
+			if(Request::$params["action"]!="step1"){
+				$this->redirect("@mform/step1");
+			}
+		}
+
+	}
+
+	/**
 	 * step1
 	 */
 	public function step1(){
 
-		$cache=$this->verify();
-
+		// cache data check
+		$cache=$this->_verify();
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// token check
 			if(!$this->Packer->Form->verify()){
-				echo "ERROR : 不正アクセスと判断して、処理を中断しました。";
+				echo "ERROR : ".self::AUTHORITY_ERROR_MESSAGE;
 				exit;
 			}
 
-			unset($post["__token"]);
+			$post=Request::$post;
 
-			$validate=$this->Validator->Mform->verify($post,"v_step1");
+			// validate check
+			$vres=$this->Validator->Mform->verify($post,"v_step1");
 
-			if($validate){
-				$this->PackerUI->Form->setErrors($validate);
+			if($vres){
+				$this->PackerUI->Form->setErrors($vres);
 			}
 			else
 			{
 				$cache["step1"]=$post;
-				$cache["step1_token"]=$this->setParityToken($post);
-				$this->Packer->Session->write($this::MFORM_CACHE,$cache);
-				$this->redirect("@mform/step2");
+				$this->Packer->Session->write(self::MFORM_CACHE,$cache);
+				$this->redirect("@mform/step2/");
 			}
 
 		}
@@ -87,32 +130,31 @@ class MformController extends AppController{
 	 */
 	public function step2(){
 
-		$cache=$this->verify([
+		$cache=$this->_verify([
 			"step1",
 		]);
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// token check
 			if(!$this->Packer->Form->verify()){
-				echo "ERROR : 不正アクセスと判断して、処理を中断しました。";
+				echo "ERROR : ".self::AUTHORITY_ERROR_MESSAGE;
 				exit;
 			}
 
-			unset($post["__token"]);
+			$post=Request::$post;
 
-			$validate=$this->Validator->Mform->verify($post,"v_step2");
+			// validate check
+			$vres=$this->Validator->Mform->verify($post,"v_step2");
 
-			if($validate){
-				$this->PackerUI->Form->setErrors($validate);
+			if($vres){
+				$this->PackerUI->Form->setErrors($vres);
 			}
 			else
 			{
 				$cache["step2"]=$post;
-				$cache["step2_token"]=$this->setParityToken($post);
-				$this->Packer->Session->write($this::MFORM_CACHE,$cache);
-				$this->redirect("@mform/step3");
+				$this->Packer->Session->write(self::MFORM_CACHE,$cache);
+				$this->redirect("@mform/step3/");
 			}
 
 		}
@@ -132,33 +174,32 @@ class MformController extends AppController{
 	 */
 	public function step3(){
 
-		$cache=$this->verify([
+		$cache=$this->_verify([
 			"step1",
 			"step2",
 		]);
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// token check
 			if(!$this->Packer->Form->verify()){
-				echo "ERROR : 不正アクセスと判断して、処理を中断しました。";
+				echo "ERROR : ".self::AUTHORITY_ERROR_MESSAGE;
 				exit;
 			}
 
-			unset($post["__token"]);
+			$post=Request::$post;
 
-			$validate=$this->Validator->Mform->verify($post,"v_step3");
+			// validate check
+			$vres=$this->Validator->Mform->verify($post,"v_step3");
 
-			if($validate){
-				$this->PackerUI->Form->setErrors($validate);
+			if($vres){
+				$this->PackerUI->Form->setErrors($vres);
 			}
 			else
 			{
 				$cache["step3"]=$post;
-				$cache["step3_token"]=$this->setParityToken($post);
-				$this->Packer->Session->write($this::MFORM_CACHE,$cache);
-				$this->redirect("@mform/step4");
+				$this->Packer->Session->write(self::MFORM_CACHE,$cache);
+				$this->redirect("@mform/step4/");
 			}
 
 		}
@@ -179,34 +220,33 @@ class MformController extends AppController{
 	 */
 	public function step4(){
 
-		$cache=$this->verify([
+		$cache=$this->_verify([
 			"step1",
 			"step2",
 			"step3",
 		]);
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// token check
 			if(!$this->Packer->Form->verify()){
-				echo "ERROR : 不正アクセスと判断して、処理を中断しました。";
+				echo "ERROR : ".self::AUTHORITY_ERROR_MESSAGE;
 				exit;
 			}
 
-			unset($post["__token"]);
+			$post=Request::$post;
 
-			$validate=$this->Validator->Mform->verify($post,"v_step4");
+			// validate check
+			$vres=$this->Validator->Mform->verify($post,"v_step4");
 
-			if($validate){
-				$this->PackerUI->Form->setErrors($validate);
+			if($vres){
+				$this->PackerUI->Form->setErrors($vres);
 			}
 			else
 			{
 				$cache["step4"]=$post;
-				$cache["step4_token"]=$this->setParityToken($post);
-				$this->Packer->Session->write($this::MFORM_CACHE,$cache);
-				$this->redirect("@mform/confirm");
+				$this->Packer->Session->write(self::MFORM_CACHE,$cache);
+				$this->redirect("@mform/confirm/");
 			}
 
 		}
@@ -226,7 +266,7 @@ class MformController extends AppController{
 	 */
 	public function confirm(){
 
-		$cache=$this->verify([
+		$cache=$this->_verify([
 			"step1",
 			"step2",
 			"step3",
@@ -237,24 +277,21 @@ class MformController extends AppController{
 
 		if(Request::$post){
 			
-			$post=Request::$post;
-
 			if(!$this->Packer->Form->verify()){
-				echo "ERROR : 不正アクセスと判断して、処理を中断しました。";
+				echo "ERROR : ".self::AUTHORITY_ERROR_MESSAGE;
 				exit;
 			}
 
 			/**
 			 *
-			 * ここで手続きを実行(予定)....
+			 * Perform the procedure here (scheduled)...
 			 *  
 			 * 
 			 */
 
 			$cache["complete"]=$post;
-			$cache["complete_token"]=$this->setParityToken($post);
-			$this->Packer->Session->write($this::MFORM_CACHE,$cache);
-			$this->redirect("@mform/complete");
+			$this->Packer->Session->write(self::MFORM_CACHE,$cache);
+			$this->redirect("@mform/complete/");
 
 		}
 	}
@@ -265,7 +302,7 @@ class MformController extends AppController{
 
 	 public function complete(){
 
-		$cache=$this->verify([
+		$cache=$this->_verify([
 			"step1",
 			"step2",
 			"step3",
@@ -274,66 +311,8 @@ class MformController extends AppController{
 		]);
 
 		//cache clear
-		$this->Packer->Session->delete($this::MFORM_CACHE);
+		$this->Packer->Session->delete(self::MFORM_CACHE);
 		
 	 }
-
-
-	/**
-	 * (private) setParityToken
-	 */
-	public function setParityToken($data){
-		return hash("sha256",json_encode($data).$this::MFORM_PARITY_SALT);
-	}
-
-	/**
-	 * (private) verify
-	 */
-	public function verify($checkTokenName=[]){
-
-		if($cache=$this->Packer->Session->read($this::MFORM_CACHE)){
-			
-			if($checkTokenName){
-				$juge=true;
-				foreach($checkTokenName as $ctn_){
-					if(!empty($cache[$ctn_]) && !empty($cache[$ctn_."_token"])){
-						$getParityToken=$cache[$ctn_."_token"];
-
-						$recheckToken=$this->setParityToken($cache[$ctn_]);
-
-						if($recheckToken!=$getParityToken){
-							$juge=false;
-						}
-					}
-					else
-					{
-						$juge=false;
-					}
-				}
-
-				if($juge){
-					return $cache;
-				}
-				else
-				{
-					if(Request::$params["action"]!="step1"){
-						$this->redirect("@mform/step1");
-					}
-				}
-			}
-			else
-			{
-				return $cache;
-			}
-
-		}
-		else
-		{
-			if(Request::$params["action"]!="step1"){
-				$this->redirect("@mform/step1");
-			}
-		}
-
-	}
 
 }
