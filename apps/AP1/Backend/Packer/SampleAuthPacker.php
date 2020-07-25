@@ -1,0 +1,41 @@
+<?php
+
+namespace mk2\core;
+
+//use mk2\packer\AuthPacker;
+Import::Packer("Auth");
+
+class SampleAuthPacker extends AuthPacker{
+
+	public $authName="mk2sampleauth";
+
+	// parity code
+	public $parityCode=[
+		"algo"=>"sha256",
+		"salt"=>"S9aa489q8er4f8f1C9ea8r4FIEoq1r56af47g1",
+		"stretch"=>7,
+	];
+	
+	// redirect url
+	public $redirect=[
+		"login"=>"@auth/login/",
+		"logined"=>"@auth/",
+	];
+	
+	// Database Table Setting
+	public $dbTable=[
+		"table"=>"User",
+		"username"=>"username",
+		"password"=>"password",
+		"addRule"=>[
+			["role >",10],
+		],
+		"fields"=>["id","username","name","role"],
+		"hash"=>[
+			"algo"=>"sha256",
+			"salt"=>"JQAIERO490498560fajio4058590FJIOEER098505986",
+			"stretch"=>9,
+		],
+	];
+
+}

@@ -24,11 +24,11 @@ class AuthController extends AppController{
 		parent::__construct();
 
 		$this->setPacker([
-			"Auth",
-			"Session",
 			"Form"=>[
 				"cssFramework"=>"bootstrap",
 			],
+			"Session",
+			"SampleAuth",
 		])
 		->setTable([
 			"User",
@@ -37,10 +37,10 @@ class AuthController extends AppController{
 			"Auth",
 		]);
 
-		$this->Packer->Auth->allowList=[
+		$this->Packer->SampleAuth->allowList=[
 			"@auth/create",
 		];
-		$this->Packer->Auth->loginCheck();
+		$this->Packer->SampleAuth->loginCheck();
 
 		if($this->Packer->Session->read("sendMsg")){
 			$this->set("sendMsg",$this->Packer->Session->flash("sendMsg"));
@@ -51,7 +51,7 @@ class AuthController extends AppController{
 	# index
 
 	public function index(){
-		$this->set("authData",$this->Packer->Auth->getAuthData());
+		$this->set("authData",$this->Packer->SampleAuth->getAuthData());
 	}
 
 	# login
@@ -67,7 +67,6 @@ class AuthController extends AppController{
 		}
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// verify check
 			if(!$this->Packer->Form->verify()){
@@ -75,6 +74,8 @@ class AuthController extends AppController{
 				exit;
 			}
 
+			$post=Request::$post;
+			
 			$validate=$this->Validator->Auth->verify($post);
 
 			if($validate){
@@ -83,7 +84,7 @@ class AuthController extends AppController{
 			else{
 
 
-				if($this->Packer->Auth->login($post)){
+				if($this->Packer->SampleAuth->login($post)){
 					$this->redirect("@auth");
 
 				}
@@ -153,7 +154,7 @@ class AuthController extends AppController{
 	public function logout(){
 		$this->autoRender=false;
 		
-		$this->Packer->Auth->logout();
+		$this->Packer->SampleAuth->logout();
 
 		$this->redirect("@auth/login");
 	}
