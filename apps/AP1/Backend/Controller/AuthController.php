@@ -37,10 +37,13 @@ class AuthController extends AppController{
 			"Auth",
 		]);
 
-		$this->Packer->SampleAuth->allowList=[
+		// 認証権限なしでもアクセス可能なURLリスト
+		$this->Packer->Auth->allowList=[
 			"@auth/create",
 		];
-		$this->Packer->SampleAuth->loginCheck();
+
+		// login Check...
+		$this->Packer->Auth->loginCheck();
 
 		if($this->Packer->Session->read("sendMsg")){
 			$this->set("sendMsg",$this->Packer->Session->flash("sendMsg"));
