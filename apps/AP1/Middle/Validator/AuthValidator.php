@@ -8,29 +8,29 @@ class AuthValidator extends Validator{
 		"username"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"ユーザー名が入力されていません",
+				"message"=>"Username not entered",
 			],
 			[
 				"rule"=>["alphaNumeric","-_=@+.,"],
-				"message"=>"ユーザー名は下記の記号と半角英数字のみで入力してください<br>「-」「_」「=」「@」「+」「.」「,」",
+				"message"=>'Enter the user name using the following symbols and single-byte alphanumeric characters only.<br>"-","_","=","@","+",".",","',
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"ユーザー名は100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"password"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"パスワードが入力されていません",
+				"message"=>"No password entered",
 			],
 			[
 				"rule"=>["alphaNumeric","-_=@+.,"],
-				"message"=>"パスワードは下記の記号と半角英数字のみで入力してください<br>「-」「_」「=」「@」「+」「.」「,」",
+				"message"=>'Enter the user name using the following symbols and single-byte alphanumeric characters only.<br>"-","_","=","@","+",".",","',
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"パスワードは100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 	];
@@ -39,53 +39,53 @@ class AuthValidator extends Validator{
 		"username"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"ユーザー名が入力されていません",
+				"message"=>"Username not entered",
 			],
 			[
 				"rule"=>["alphaNumeric","-_=@+.,"],
-				"message"=>"ユーザー名は下記の記号と半角英数字のみで入力してください<br>「-」「_」「=」「@」「+」「.」「,」",
+				"message"=>'Enter the user name using the following symbols and single-byte alphanumeric characters only.<br>"-","_","=","@","+",".",","',
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"ユーザー名は100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"password"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"パスワードが入力されていません",
+				"message"=>"No password entered",
 			],
 			[
 				"rule"=>["alphaNumeric","-_=@+.,"],
-				"message"=>"パスワードは下記の記号と半角英数字のみで入力してください<br>「-」「_」「=」「@」「+」「.」「,」",
+				"message"=>'Enter the user name using the following symbols and single-byte alphanumeric characters only.<br>"-","_","=","@","+",".",","',
 			],
 			[
 				"rule"=>["maxLength",100],
-				"message"=>"パスワードは100文字以内で入力してください",
+				"message"=>"Enter within 100 characters",
 			],
 		],
 		"nickname"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"ニックネームが入力されていません",
+				"message"=>"No nickname entered",
 			],
 			[
 				"rule"=>["maxLength",255],
-				"message"=>"ニックネームは255文字以内で入力してください",
+				"message"=>"Enter within 255 characters",
 			],
 		],
 		"email"=>[
 			[
 				"rule"=>"notBlank",
-				"message"=>"Emailが入力されていません",
+				"message"=>"Email not entered",
 			],
 			[
 				"rule"=>"isEmail",
-				"message"=>"不正なメールフォーマット形式と判断致しました",
+				"message"=>"Judged as an invalid mail format",
 			],
 			[
 				"rule"=>["maxLength",255],
-				"message"=>"Emailは255文字以内で入力してください",
+				"message"=>"Enter within 255 characters",
 			],
 		]
 	];

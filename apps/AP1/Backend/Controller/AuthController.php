@@ -37,14 +37,15 @@ class AuthController extends AppController{
 			"Auth",
 		]);
 
-		// 認証権限なしでもアクセス可能なURLリスト
-		$this->Packer->Auth->allowList=[
+		// List of URLs that can be accessed without authentication authority
+		$this->Packer->SampleAuth->allowList=[
 			"@auth/create",
 		];
 
 		// login Check...
-		$this->Packer->Auth->loginCheck();
+		$this->Packer->SampleAuth->loginCheck();
 
+		// send message loading
 		if($this->Packer->Session->read("sendMsg")){
 			$this->set("sendMsg",$this->Packer->Session->flash("sendMsg"));
 		}
@@ -61,7 +62,7 @@ class AuthController extends AppController{
 
 	public function login(){
 
-		//データベースが接続できるかチェック用....
+		// For checking if the database can be connected....
 		try{
 			$this->Table->User->select()->count();
 		}catch(\Exception $e){
@@ -73,12 +74,13 @@ class AuthController extends AppController{
 
 			// verify check
 			if(!$this->Packer->Form->verify()){
-				echo "Error! : 不正なアクセスと判断し、処理を中断しました。";
+				echo "Error! : The process was interrupted because it was determined to be unauthorized access.";
 				exit;
 			}
 
 			$post=Request::$post;
 			
+			// validate
 			$validate=$this->Validator->Auth->verify($post);
 
 			if($validate){
@@ -88,12 +90,12 @@ class AuthController extends AppController{
 
 
 				if($this->Packer->SampleAuth->login($post)){
-					$this->redirect("@auth");
+					$this->redirect("@auth/");
 
 				}
 				else{
 					$this->Packer->Form->setErrors([
-						"autholity"=>"ログインできませんでした",
+						"username"=>"I cannot log in because my account information does not exist or I do not have permission",
 					]);
 				}
 
@@ -108,14 +110,17 @@ class AuthController extends AppController{
 	public function create(){
 
 		if(Request::$post){
-			$post=Request::$post;
 
 			// verify check
 			if(!$this->Packer->Form->verify()){
-				echo "Error! : 不正なアクセスと判断し、処理を中断しました。";
+				echo "Error! : The process was interrupted because it was determined to be unauthorized access.";
 				exit;
 			}
 
+			$post=Request::$post;
+
+
+			// validate
 			$validate=$this->Validator->Auth->verify($post,"validate_created");
 
 			if($validate){
@@ -123,16 +128,18 @@ class AuthController extends AppController{
 			}
 			else{
 
-				try{
-					$saveObj=$this->Table->User->save();
+				// user table create
 
-					$saveObj->tsBegin();
+				try{
+
+					$saveObj=$this->Table->User->save()->tsBegin();
 
 					$saves=[
 						"username"=>$post["username"],
-						"password"=>$this->Packer->Auth->getPasswordHash($post["password"]),
+						"password"=>$this->Packer->SampleAuth->getPasswordHash($post["password"]),
 						"nickname"=>$post["nickname"],
 						"email"=>$post["email"],
+						"role"=>10,
 					];
 
 					$res=$saveObj->save($saves);
@@ -145,8 +152,10 @@ class AuthController extends AppController{
 
 				$saveObj->tsCommit();
 				
-				$this->Packer->Session->write("sendMsg","アカウントの登録が完了しました");
-				$this->redirect("@auth/login");
+				// send message setting
+				$this->Packer->Session->write("sendMsg","Account registration completed");
+
+				return $this->redirect("@auth/login/");
 
 			}
 		}
@@ -157,8 +166,10 @@ class AuthController extends AppController{
 	public function logout(){
 		$this->autoRender=false;
 		
+		// logout
 		$this->Packer->SampleAuth->logout();
 
-		$this->redirect("@auth/login");
+		return $this->redirect("@auth/login/");
+
 	}
 }

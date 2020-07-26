@@ -29,7 +29,7 @@ return[
 		"type"=>"mysql",
 		"host"=>"localhost",
 		"username"=>"root",
-		"password"=>"",
+		"password"=>"Buteneko19#",
 		"port"=>3306,
 		"database"=>"mk2dbauth",
 		"encoding"=>"utf8mb4",

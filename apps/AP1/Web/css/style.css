@@ -130,8 +130,8 @@ footer{
 .invalid-feedback{
 	background:#ee1111;
 	color:#fff;
-	line-height:2.2em;
-	padding:0px 10px;
+	line-height:1.6em;
+	padding:5px 15px;
 	font-size:14px;
 }
 .form-control{

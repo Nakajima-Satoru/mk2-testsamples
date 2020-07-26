@@ -2,11 +2,11 @@
 
 namespace mk2\core;
 
-//use mk2\packer\AuthPacker;
 Import::Packer("Auth");
 
 class SampleAuthPacker extends AuthPacker{
 
+	// auth name
 	public $authName="mk2sampleauth";
 
 	// parity code
@@ -30,7 +30,7 @@ class SampleAuthPacker extends AuthPacker{
 		"addRule"=>[
 			["role >",10],
 		],
-		"fields"=>["id","username","name","role"],
+		"fields"=>["id","username","email","nickname","role"],
 		"hash"=>[
 			"algo"=>"sha256",
 			"salt"=>"JQAIERO490498560fajio4058590FJIOEER098505986",
